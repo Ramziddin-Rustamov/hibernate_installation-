@@ -45,8 +45,15 @@ public class Main {
 //        student.setSurname("Botirov");
 //        updateStudent(1,student);
 
+        //update methods
+//        StudentEntity student = new StudentEntity();
+//        student.setName("Ram");
+//        student.setSurname("Rus");
+//        updateByQuery(1,student);
 
-        // delete by id
+          // delete by id
+//        delete(1);// method one
+          deleteUsingHQL(2);
 
     }
 
@@ -110,6 +117,28 @@ public class Main {
 //        return  list;
 //    }
 
+
+//    public static void updateByQuery(Integer id, StudentEntity studentEntity)
+//    {
+//
+//        StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+//        Metadata meta = new MetadataSources(standardServiceRegistry).getMetadataBuilder().build();
+//        SessionFactory factory =meta.getSessionFactoryBuilder().build();
+//
+//        Session session = factory.openSession();
+//        Transaction transaction = session.beginTransaction();
+//        Query query = session.createQuery("update StudentEntity set name =:name , surname =:surname where id =:id ");
+//        query.setParameter("name",studentEntity.getName());
+//        query.setParameter("surname", studentEntity.getSurname());
+//        query.setParameter("id", id);
+//       int effectedRows =  query.executeUpdate();
+//        transaction.commit();
+//        session.close();
+//        factory.close();
+//
+//    }
+
+
     //update
 
 
@@ -133,6 +162,7 @@ public class Main {
 //        student.setSurname(studentEntity.getSurname());
 //        Transaction transaction = session.beginTransaction();
 //        session.update(student);
+//        session.update(student); // we can also use save instead of update
 //        transaction.commit();
 //        session.close();
 //        factory.close();
@@ -167,4 +197,50 @@ public class Main {
 //        Session session = factory.openSession();
 //        session.delete(id);
 //    }
+
+   // method 1 to delete onoe item
+//    public static void delete(Integer id){
+//        StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+//        Metadata meta = new MetadataSources(standardServiceRegistry).getMetadataBuilder().build();
+//        SessionFactory factory =meta.getSessionFactoryBuilder().build();
+//
+//        // we can say that go to the config and indicated files you should read and build mapping tag
+//        //ba'zaga kirib connection qil va bor tabellarni olib keladi
+//
+//        Session session = factory.openSession();
+//        Transaction transaction = session.beginTransaction();
+//
+//       StudentEntity student = session.get(StudentEntity.class,id);
+//       if(student == null){
+//           System.out.println("there is no student releted to "+id);
+//           return;
+//       }
+//
+//       session.delete(student);
+//
+//        transaction.commit();
+//        session.close();
+//        factory.close();
+//    }
+
+      // method 2
+//   public static void deleteUsingHQL(Integer id){
+//       StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+//       Metadata meta = new MetadataSources(standardServiceRegistry).getMetadataBuilder().build();
+//       SessionFactory factory =meta.getSessionFactoryBuilder().build();
+//
+//       // we can say that go to the config and indicated files you should read and build mapping tag
+//       //ba'zaga kirib connection qil va bor tabellarni olib keladi
+//
+//       Session session = factory.openSession();
+//       Transaction transaction = session.beginTransaction();
+//
+//       Query query = session.createQuery("delete from StudentEntity where id =:id");
+//       query.setParameter("id",id);
+//       query.executeUpdate();
+//
+//       transaction.commit();
+//       session.close();
+//       factory.close();
+//   }
 }
