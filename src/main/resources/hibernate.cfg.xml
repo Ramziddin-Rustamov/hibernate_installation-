@@ -6,7 +6,15 @@
         <property name="hibernate.connection.username">hibernate_lesson_user</property>
         <property name="hibernate.connection.password">hibernate_lesson_password</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernate_db_lesson</property>
+         <!-- data defination language  to enable our system to give role to change our datbase
+                  adding new column does not delte old date-->
+<!--        if we put create instead of update , all of the tabels will be deleted and will be regenerated
+ All of the data will be disappeared -->
+        <!--        <property name="hbm2ddl.auto">create</property>-->
+        <!--  boshida create qiladi , malumot qolmaydi keyin chiqib ketadi  ko'pmincha unit tstinda ishlatiladif     -->
+        <!--        <property name="hbm2ddl.auto">create-drop</property>-->
         <property name="hbm2ddl.auto">update</property>
+          <!-- true or false to show sll commands on command line-->
         <property name="show_sql">true</property>
 
         <!-- MAPPINGS -->
