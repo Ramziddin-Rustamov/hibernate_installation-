@@ -53,7 +53,7 @@ public class Main {
 
           // delete by id
 //        delete(1);// method one
-          deleteUsingHQL(2);
+//          deleteUsingHQL(2); // method two
 
     }
 
